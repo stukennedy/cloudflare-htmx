@@ -17,6 +17,12 @@ $ npm i
 $ npm run dev
 ```
 
+- NextJs-style routing files, written in Typescript, are found in the `functions` folder.
+- (don't change the `_middleware.ts`)
+- Endpoints should return HTML strings wrapped in a `new Response()`.
+- `const html = String.raw;` declaration allows a string template to be syntax highlighted in VS Code
+- `_layout.ts` files wrap all `GET` responses in peer files and subdirectories (use `{{children}}` marker to identify where to render the content)
+
 ### HTMX
 
 [HTMX](https://htmx.org/) is a lightweight javascript library that encourages webapps to be built using HATEOAS.
@@ -28,7 +34,6 @@ This means we return HTML from every endpoint request and never JSON. HTMX makes
 ### Cloudflare Pages
 
 [Cloudflare Pages](https://developers.cloudflare.com/pages/) utilise the Cloudflare CDN to provide Typescript Edge Functions in the cloud and provides a simple framework for developing and deploying serverless webapps.
-This project takes advantage of the simple NextJS-style routing structure in Cloudflare and adds support for `_layout.ts` files that wrap content heirarchically (using a `{{children}}` marker in the layout text to denote where content is rendered.)
 This allows us to build scalable web-apps that are server rendered, whilst maintaining the dynamic asynchronous experience that Single Page Applications have enjoyed.
 
 ### \_hyperscript
