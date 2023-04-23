@@ -1,0 +1,17 @@
+{
+  "name": "cloudflare-htmx",
+  "version": "1.0.0",
+  "description": "Cloudflare Pages + HTMX + _hyperscript + TailwindCSS",
+  "scripts": {
+    "dev": "wrangler pages dev ./static",
+    "daisyui": "^2.51.5",
+    "publish": "wrangler pages publish ./static",
+    "tailwind": "tailwindcss build -i ./tailwind.css -o ./static/assets/css/output.css --watch"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230404.0",
+    "tailwindcss": "^3.3.1",
+    "wrangler": "2.15.0"
+  },
+  "private": true
+}
