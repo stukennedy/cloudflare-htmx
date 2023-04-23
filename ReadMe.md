@@ -2,6 +2,12 @@
 
 This is a starter project to create a zero-build web-app using [HTMX](https://htmx.org/) on [Cloudflare](https://dash.cloudflare.com/). It uses [\_hyperscript](https://hyperscript.org) for additional (rare) client side JS and [TailwindCSS](https://tailwindcss.com/) and [DaisyUI](https://daisyui.com/) for styling and theme.
 
+## Live Demo
+
+![Cloudflare-HTMX demo](screenshot.png "Demo Screenshot")
+
+[https://cloudflare-htmx.pages.dev/](https://cloudflare-htmx.pages.dev/)
+
 ## Getting Started
 
 ```bash
