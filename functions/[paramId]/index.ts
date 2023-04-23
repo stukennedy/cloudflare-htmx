@@ -1,8 +1,7 @@
 const html = String.raw;
 
 export const onRequestPost: PagesFunction = async ({ request }) => {
-  // const url = new URL(request.url);
-  const url = "weutywertjkhwljkrthwelrtkjhwrwerwerwerwer";
+  const url = new URL(request.url);
   return new Response(html`<div class="mockup-code text-left">
     <pre data-prefix=">" class="text-accent w-48"><code>${url}</code></pre>
     <pre data-prefix="$"><code>npm i daisyui</code></pre>
