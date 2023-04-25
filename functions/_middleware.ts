@@ -23,10 +23,8 @@ export const onRequest: PagesFunction = async ({ request, next }) => {
       const layoutResponse = await fetch(layoutUrl);
       if (layoutResponse.ok) {
         const layoutFunction = await layoutResponse.text();
-        text =
-          layoutFunction === ""
-            ? text
-            : layoutFunction.replace("{{children}}", text);
+        const isLayout = layoutFunction.match("{{children}}");
+        text = isLayout ? layoutFunction.replace("{{children}}", text) : text;
       }
     }
     return new Response(text, HEADERS);
