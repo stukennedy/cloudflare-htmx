@@ -10,13 +10,17 @@ export const onRequestPost: PagesFunction = async ({ request }) => {
   </div>`);
 };
 
-export const onRequestGet: PagesFunction = async ({ request }) => {
+export const onRequestGet: PagesFunction = async ({ params }) => {
   return new Response(html` <div class="h-screen p-10 text-center">
     <div class="mockup-phone border-primary">
       <div class="camera"></div>
       <div class="display">
         <div class="artboard artboard-demo phone-1">
-          <div class="btn btn-primary" hx-post="#" hx-swap="outerHTML">
+          <div
+            class="btn btn-primary"
+            hx-post="/${params.paramId}/"
+            hx-swap="outerHTML"
+          >
             Get content
           </div>
         </div>

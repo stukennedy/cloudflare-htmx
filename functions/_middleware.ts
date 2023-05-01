@@ -4,7 +4,8 @@ export const onRequest: PagesFunction = async ({ request, next }) => {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
-  if (pathname.startsWith("/assets")) {
+  // ignore anything in assets or with an extension (e.g. /favicon.ico)
+  if (pathname.startsWith("/assets") || pathname.match(/\.[^/]+$/)) {
     return next();
   }
 

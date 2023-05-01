@@ -53,7 +53,7 @@ export const onRequestGet: PagesFunction = async ({ request }) => {
       <div class="text-2xl text-secondary mb-4">Cloudflare + HTMX</div>
       ${Stat()}
       <div class="mb-10"></div>
-      <div hx-post="#" hx-trigger="load" class="w-full">
+      <div hx-post="/" hx-trigger="load" class="w-full">
         ${Table([null, null, null, null])}
       </div>
     </div>

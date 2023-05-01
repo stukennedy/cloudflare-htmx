@@ -2,7 +2,7 @@ import NavBar from "@src/components/NavBar";
 const html = String.raw;
 
 // this is the layout for the entire site
-export const onRequestGet: PagesFunction = ({ request }) => {
+export const onRequestGet: PagesFunction = () => {
   const title = "Cloudflare Pages + HTMX + Hyperscript";
   return new Response(html`
     <!DOCTYPE html>
