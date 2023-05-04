@@ -1,10 +1,10 @@
-import NavBar from "@src/components/NavBar";
-const html = String.raw;
+import SupabaseAuth from "@src/components/SupabaseAuth";
+import { html, LayoutFunction } from "@src/lib/html";
 
 // this is the layout for the entire site
-export const onRequestGet: PagesFunction = () => {
+const _layout: LayoutFunction = ({ children }) => {
   const title = "Cloudflare Pages + HTMX + Hyperscript";
-  return new Response(html`
+  return html`
     <!DOCTYPE html>
     <html lang="en" data-theme="mytheme">
       <head>
@@ -15,9 +15,13 @@ export const onRequestGet: PagesFunction = () => {
         <script src="/assets/js/htmx.min.js"></script>
         <script src="/assets/js/_hyperscript.min.js"></script>
       </head>
-      <body class="bg-base-300">
-        ${NavBar()} {{children}}
+      <body class="bg-base-300" hx-boost="true">
+        ${children}
+        <div id="toaster"></div>
+        <div id="modal"></div>
+        ${SupabaseAuth("/dashboard")}
       </body>
     </html>
-  `);
+  `;
 };
+export default _layout;

@@ -20,8 +20,8 @@ $ npm run dev
 - NextJs-style routing files, written in Typescript, are found in the `functions` folder.
 - (don't change the `_middleware.ts`)
 - Endpoints should return HTML strings wrapped in a `new Response()`.
-- `const html = String.raw;` declaration allows a string template to be syntax highlighted in VS Code
-- `_layout.ts` files wrap all `GET` responses in peer files and subdirectories (use `{{children}}` marker to identify where to render the content)
+- `import { html, htmlResponse } from "@src/lib/html"` declaration allows a string template to be syntax highlighted in VS Code
+- layout files wrap all `GET` responses in peer files and subdirectories ... add a layout file to the `src/layouts` folder and add the new layout to the `src/routes.ts` file to tell the app which folder the layout is for.
 
 ### HTMX
 

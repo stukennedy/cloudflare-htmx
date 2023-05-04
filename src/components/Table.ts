@@ -1,4 +1,4 @@
-const html = String.raw;
+import { html, htmlResponse } from "@src/lib/html";
 
 type Item = {
   name: string;

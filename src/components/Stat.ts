@@ -1,4 +1,4 @@
-const html = String.raw;
+import { html, htmlResponse } from "@src/lib/html";
 
 export default () => html`
   <div class="stats shadow">

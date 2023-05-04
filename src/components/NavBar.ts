@@ -1,4 +1,4 @@
-const html = String.raw;
+import { html, htmlResponse } from "@src/lib/html";
 
 /*
  * In this Navbar component, we want to add the "active" class to the
@@ -11,8 +11,8 @@ const html = String.raw;
  */
 export default () => {
   const links = [
-    { text: "Home", href: "/" },
-    { text: "Page", href: "/4" },
+    { text: "Home", href: "/dashboard" },
+    { text: "Page", href: "/dashboard/4" },
   ];
   return html` <div class="navbar bg-base-100">
     <div class="navbar-start">
@@ -90,7 +90,7 @@ export default () => {
             <a>Settings</a>
           </li>
           <li>
-            <a>Logout</a>
+            <a hx-post="/logout">Logout</a>
           </li>
         </ul>
       </div>
