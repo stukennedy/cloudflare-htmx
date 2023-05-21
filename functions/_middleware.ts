@@ -1,2 +1,4 @@
-import { htmxMiddleware } from "@src/lib/htmxMiddleware";
-export const onRequestGet = [htmxMiddleware];
+import RootLayout from '@src/layouts/RootLayout';
+import { applyLayout } from '@src/lib/html';
+
+export const onRequestGet = [applyLayout(RootLayout)];

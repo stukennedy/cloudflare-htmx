@@ -1,9 +1,9 @@
-import SupabaseAuth from "@src/components/SupabaseAuth";
-import { html, LayoutFunction } from "@src/lib/html";
+import SupabaseAuth from '@src/components/SupabaseAuth';
+import { html, LayoutFunction } from '@src/lib/html';
 
 // this is the layout for the entire site
 const _layout: LayoutFunction = ({ children }) => {
-  const title = "Cloudflare Pages + HTMX + Hyperscript";
+  const title = 'Cloudflare Pages + HTMX + Hyperscript';
   return html`
     <!DOCTYPE html>
     <html lang="en" data-theme="mytheme">
@@ -19,7 +19,7 @@ const _layout: LayoutFunction = ({ children }) => {
         ${children}
         <div id="toaster"></div>
         <div id="modal"></div>
-        ${SupabaseAuth("/dashboard")}
+        ${SupabaseAuth('/dashboard')}
       </body>
     </html>
   `;
