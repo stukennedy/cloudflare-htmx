@@ -1,6 +1,6 @@
 {
   "name": "cloudflare-htmx",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "HTMX library for Cloudflare Pages",
   "main": "index.ts",
   "devDependencies": {
@@ -22,8 +22,14 @@
   ],
   "author": "Stu Kennedy",
   "license": "ISC",
+  "bin": {
+    "my-command": "./install.js"
+  },
   "bugs": {
     "url": "https://github.com/stukennedy/cloudflare-htmx/issues"
   },
-  "homepage": "https://github.com/stukennedy/cloudflare-htmx#readme"
+  "homepage": "https://github.com/stukennedy/cloudflare-htmx#readme",
+  "dependencies": {
+    "fs-extra": "^11.1.1"
+  }
 }

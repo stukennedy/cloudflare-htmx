@@ -12,7 +12,12 @@ export const applyLayout =
   (layout: LayoutFunction): PagesFunction =>
   async ({ request, next }) => {
     const url = new URL(request.url);
-    if (url.pathname.match(/\.[^/]+$/)) {
+    const method = request.method;
+    if (
+      url.pathname.match(/\.[^/]+$/) ||
+      method !== 'GET' ||
+      url.pathname.match(/_[^/]+$/)
+    ) {
       return next();
     }
 
