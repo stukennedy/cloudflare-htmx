@@ -16,6 +16,6 @@ fs.copy(sourceDir, process.cwd())
 
 const pkg = { name: rootDir, version: '0.0.0' };
 fs.writeFileSync(
-  path.resolve(root, 'package.json'),
+  path.resolve(process.cwd(), 'package.json'),
   JSON.stringify(pkg, null, 2)
 );
