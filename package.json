@@ -1,23 +1,29 @@
 {
   "name": "cloudflare-htmx",
   "version": "1.0.0",
-  "description": "Cloudflare Pages + HTMX + _hyperscript + TailwindCSS",
-  "scripts": {
-    "dev": "wrangler pages dev ./static --compatibility-date=2023-05-01",
-    "daisyui": "^2.51.5",
-    "publish": "wrangler pages publish ./static",
-    "tailwind": "tailwindcss build -i ./tailwind.css -o ./static/assets/css/output.css --watch"
-  },
+  "description": "HTMX library for Cloudflare Pages",
+  "main": "index.ts",
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230404.0",
-    "@types/cookie": "^0.5.1",
-    "tailwindcss": "^3.3.1",
-    "wrangler": "2.15.0"
+    "@cloudflare/workers-types": "^4.20230404.0"
   },
-  "private": true,
-  "dependencies": {
-    "@supabase/supabase-js": "^2.21.0",
-    "cookie": "^0.5.0",
-    "daisyui": "^2.51.6"
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stukennedy/cloudflare-htmx.git"
+  },
+  "keywords": [
+    "cloudflare",
+    "pages",
+    "htmx",
+    "hateos",
+    "jamstack"
+  ],
+  "author": "Stu Kennedy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stukennedy/cloudflare-htmx/issues"
+  },
+  "homepage": "https://github.com/stukennedy/cloudflare-htmx#readme"
 }
