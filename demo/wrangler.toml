@@ -1,3 +1,7 @@
 name = "cloudflare-htmx"
 compatibility_date = "2023-04-23"
 
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "auth"
+database_id = "21200feb-9032-4c7a-8364-4a080dbbdf02"

@@ -19,14 +19,14 @@ $ npm run dev
 
 - NextJS-style routing files, written in Typescript, are found in the `functions` folder.
 - Endpoints should return HTML strings wrapped in a `new Response()`.
-- `import { html, htmlResponse } from "@src/lib/html"` declaration allows a string template to be syntax highlighted in VS Code
+- `import { html, htmlResponse } from "@lib/html"` declaration allows a string template to be syntax highlighted in VS Code
 - Use `_middleware.ts` files at any level of the folder structure to apply a layout. You should use this to at least apply your root level HTML wrapper.
   e.g.
 
 ```typescript
 // functions/_middleware.ts
-import RootLayout from '@src/layouts/RootLayout';
-import { applyLayout } from '@src/lib/html';
+import RootLayout from '@layouts/RootLayout';
+import { applyLayout } from '@lib/html';
 
 export const onRequestGet = [applyLayout(RootLayout)];
 ```
@@ -35,8 +35,8 @@ This makes sure that the `RootLayout` which is of type `LayoutFunction` wraps al
 Our `RootLayout.ts` looks like this:
 
 ```typescript
-import SupabaseAuth from '@src/components/SupabaseAuth';
-import { html, LayoutFunction } from '@src/lib/html';
+import SupabaseAuth from '@components/SupabaseAuth';
+import { html, LayoutFunction } from '@lib/html';
 
 // this is the layout for the entire site
 const _layout: LayoutFunction = ({ children }) => {
@@ -70,9 +70,9 @@ Other layouts can be handled a similar way throughout the folder structure. e.g.
 
 ```typescript
 // functions/dashboard/_middleware.ts
-import DashLayout from '@src/layouts/DashLayout';
-import { applyLayout } from '@src/lib/html';
-import { getSupabase } from '@src/model/supabase';
+import DashLayout from '@layouts/DashLayout';
+import { applyLayout } from '@lib/html';
+import { getSupabase } from '@model/supabase';
 
 const authentication: PagesFunction = async ({ request, next }) => {
   const url = new URL(request.url);

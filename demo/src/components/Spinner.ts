@@ -1,4 +1,4 @@
-import { html } from '@src/lib/html';
+import { html } from '@lib/html';
 
 export default (message: string) => html`
   <div class="w-full h-full">

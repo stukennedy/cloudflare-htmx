@@ -1,4 +1,4 @@
-import { html, htmlResponse } from "@src/lib/html";
+import { html, htmlResponse } from '@lib/html';
 
 type Item = {
   name: string;
@@ -87,7 +87,7 @@ export default (items: Item[] | null[]) => {
                     </tr>
                   `
             )
-            .join("\n")}
+            .join('\n')}
         </tbody>
         <!-- foot -->
         <tfoot>

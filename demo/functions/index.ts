@@ -1,40 +1,36 @@
-import Toast from "@src/components/Toast";
-import { getSupabase } from "@src/model/supabase";
+import Toast from '@components/Toast';
+import { Env, isAuthorised, login } from 'cloudflare-auth';
 
-import { html, htmlResponse } from "@src/lib/html";
+import { html, htmlResponse } from '@lib/html';
+import { authConfig } from '@lib/constants';
 
-export const onRequestPost: PagesFunction = async (event) => {
-  const data = await event.request.formData();
-  const email = data.get("email") as string;
+export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
+  const url = new URL(request.url);
+  const data = await request.formData();
+  const email = data.get('email') as string;
   if (!email) {
-    return htmlResponse(Toast("Email not specified", "alert-error"));
+    return htmlResponse(Toast('Email not specified'));
   }
-  const supabase = await getSupabase();
-  const url = new URL(event.request.url);
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: {
-      emailRedirectTo: `${url.origin}/logging-in`,
-    },
-  });
-
-  if (error) {
-    return htmlResponse(Toast(error.message, "alert-error"));
+  const token = await login(email, env);
+  const magicLink = `${url.origin}/verify?token=${token}`;
+  try {
+    return htmlResponse(
+      Toast(
+        'Click to login: <a href="' + magicLink + '">' + magicLink + '</a>',
+        'alert-success'
+      )
+    );
+  } catch {
+    return htmlResponse(Toast('Magic link failed to send!', 'alert-failure'));
   }
-  return htmlResponse(
-    Toast("Please check your email for a magic link to log into the website")
-  );
 };
 
 export const onRequestGet: PagesFunction = async ({ request }) => {
-  const supabase = await getSupabase(request);
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (user) {
-    console.log("redirect to dashboard");
+  const loggedIn = await isAuthorised(authConfig, request);
+  if (loggedIn) {
+    console.log('redirect to dashboard');
     const url = new URL(request.url);
-    return Response.redirect(url.origin + "/dashboard", 303);
+    return Response.redirect(url.origin + '/dashboard', 303);
   }
   return htmlResponse(html`
     <div class="w-full h-screen p-10 text-center">

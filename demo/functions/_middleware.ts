@@ -1,4 +1,4 @@
-import RootLayout from '@src/layouts/RootLayout';
-import { applyLayout } from '@src/lib/html';
+import RootLayout from '@layouts/RootLayout';
+import { applyLayout } from '@lib/html';
 
 export const onRequestGet = [applyLayout(RootLayout)];

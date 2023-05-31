@@ -1,4 +1,4 @@
-import { html, htmlResponse } from "@src/lib/html";
+import { html, htmlResponse } from '@lib/html';
 
 export const onRequestPost: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);

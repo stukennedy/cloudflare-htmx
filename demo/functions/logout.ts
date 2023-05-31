@@ -1,13 +1,6 @@
-import Toast from '@src/components/Toast';
-import { htmlResponse } from '@src/lib/html';
+import { authConfig } from '@lib/constants';
+import { logout } from 'cloudflare-auth';
 
 export const onRequestPost: PagesFunction = async ({ request }) => {
-  let response = htmlResponse(Toast('Successfully logged out'));
-  const accessCookie = `sb-access-token=''; path=/; max-age=-1; SameSite=Lax;`;
-  const refreshCookie = `sb-refresh-token=''; path=/; max-age=-1; SameSite=Lax;`;
-
-  response.headers.append('Set-Cookie', accessCookie);
-  response.headers.append('Set-Cookie', refreshCookie);
-  response.headers.append('HX-Redirect', '/');
-  return response;
+  return logout(authConfig, new URL(request.url));
 };

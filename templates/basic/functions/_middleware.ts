@@ -1,4 +1,4 @@
 import { applyLayout } from 'cloudflare-htmx';
-import RootLayout from '@src/layouts/RootLayout';
+import RootLayout from '@layouts/RootLayout';
 
 export const onRequestGet = [applyLayout(RootLayout)];

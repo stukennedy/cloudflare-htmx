@@ -1,4 +1,4 @@
-import SubLayout from '@src/layouts/SubLayout';
-import { applyLayout } from '@src/lib/html';
+import SubLayout from '@layouts/SubLayout';
+import { applyLayout } from '@lib/html';
 
 export const onRequestGet = [applyLayout(SubLayout)];

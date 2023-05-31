@@ -1,4 +1,4 @@
-import { html, htmlResponse } from "@src/lib/html";
+import { html, htmlResponse } from '@lib/html';
 
 /*
  * In this Navbar component, we want to add the "active" class to the
@@ -11,8 +11,8 @@ import { html, htmlResponse } from "@src/lib/html";
  */
 export default () => {
   const links = [
-    { text: "Home", href: "/dashboard" },
-    { text: "Page", href: "/dashboard/4" },
+    { text: 'Home', href: '/dashboard' },
+    { text: 'Page', href: '/dashboard/4' },
   ];
   return html` <div class="navbar bg-base-100">
     <div class="navbar-start">
@@ -33,7 +33,7 @@ export default () => {
               >
             </li>`
           )
-          .join("\n")}
+          .join('\n')}
       </ul>
     </div>
     <div class="navbar-end">

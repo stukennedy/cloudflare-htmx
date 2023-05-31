@@ -1,5 +1,4 @@
-import SupabaseAuth from '@src/components/SupabaseAuth';
-import { html, LayoutFunction } from '@src/lib/html';
+import { html, LayoutFunction } from '@lib/html';
 
 // this is the layout for the entire site
 const _layout: LayoutFunction = ({ children }) => {
@@ -19,7 +18,6 @@ const _layout: LayoutFunction = ({ children }) => {
         ${children}
         <div id="toaster"></div>
         <div id="modal"></div>
-        ${SupabaseAuth('/dashboard')}
       </body>
     </html>
   `;

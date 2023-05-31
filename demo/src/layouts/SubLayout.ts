@@ -1,4 +1,4 @@
-import { html, LayoutFunction } from "@src/lib/html";
+import { html, LayoutFunction } from '@lib/html';
 
 // this is the layout for all pages inside the [paramId] folder and its subfolders
 const _layout: LayoutFunction = ({ children, request }) => {
