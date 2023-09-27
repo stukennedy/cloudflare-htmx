@@ -1,4 +1,4 @@
-import { html, htmlResponse } from '@lib/html';
+import { html, view } from '@lib/html';
 
 export default () => html`
   <div class="stats shadow">

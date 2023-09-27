@@ -1,7 +1,5 @@
 import Spinner from '@components/Spinner';
-import { html, htmlResponse } from '@lib/html';
+import { html, view } from '@lib/html';
 
 export const onRequestGet: PagesFunction = async () =>
-  htmlResponse(html`
-    <div class="h-screen">${Spinner('Logging in ...')}</div>
-  `);
+  view(html` <div class="h-screen">${Spinner('Logging in ...')}</div> `);

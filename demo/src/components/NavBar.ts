@@ -1,4 +1,4 @@
-import { html, htmlResponse } from '@lib/html';
+import { html, view } from '@lib/html';
 
 /*
  * In this Navbar component, we want to add the "active" class to the

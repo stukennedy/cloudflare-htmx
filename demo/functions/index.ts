@@ -1,7 +1,7 @@
 import Toast from '@components/Toast';
 import { Env, isAuthorised, login } from 'cloudflare-auth';
 
-import { html, htmlResponse } from '@lib/html';
+import { html, view } from '@lib/html';
 import { authConfig } from '@lib/constants';
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
@@ -9,19 +9,19 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const data = await request.formData();
   const email = data.get('email') as string;
   if (!email) {
-    return htmlResponse(Toast('Email not specified'));
+    return view(Toast('Email not specified'));
   }
   const token = await login(email, env);
   const magicLink = `${url.origin}/verify?token=${token}`;
   try {
-    return htmlResponse(
+    return view(
       Toast(
         'Click to login: <a href="' + magicLink + '">' + magicLink + '</a>',
         'alert-success'
       )
     );
   } catch {
-    return htmlResponse(Toast('Magic link failed to send!', 'alert-failure'));
+    return view(Toast('Magic link failed to send!', 'alert-failure'));
   }
 };
 
@@ -32,7 +32,7 @@ export const onRequestGet: PagesFunction = async ({ request }) => {
     const url = new URL(request.url);
     return Response.redirect(url.origin + '/dashboard', 303);
   }
-  return htmlResponse(html`
+  return view(html`
     <div class="w-full h-screen p-10 text-center">
       <div class="flex justify-center pt-24 lg:pt-64">
         <div class="p-4 md:p-0 w-full md:w-96">

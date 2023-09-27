@@ -1,8 +1,8 @@
-import { html, htmlResponse } from '@lib/html';
+import { html, view } from '@lib/html';
 
 export const onRequestPost: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
-  return htmlResponse(html`<div class="mockup-code text-left">
+  return view(html`<div class="mockup-code text-left">
     <pre data-prefix=">" class="text-accent w-48"><code>${url}</code></pre>
     <pre data-prefix="$"><code>npm i daisyui</code></pre>
     <pre data-prefix=">" class="text-warning"><code>installing...</code></pre>
@@ -11,7 +11,7 @@ export const onRequestPost: PagesFunction = async ({ request }) => {
 };
 
 export const onRequestGet: PagesFunction = async ({ params }) => {
-  return htmlResponse(html` <div class="h-screen p-10 text-center">
+  return view(html` <div class="h-screen p-10 text-center">
     <div class="mockup-phone border-primary">
       <div class="camera"></div>
       <div class="display">

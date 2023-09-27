@@ -1,7 +1,8 @@
 const HEADERS = { headers: { 'content-type': 'text/html;charset=UTF-8' } };
 
 export const html = String.raw;
-export const htmlResponse = (dom: string) => new Response(dom, HEADERS);
+export const view = (...domArgs: string[]) =>
+  new Response(domArgs.join('\n'), HEADERS);
 
 export type LayoutFunction<Env = any, Params extends string = any> = ({
   children,
@@ -16,14 +17,15 @@ export type LayoutFunction<Env = any, Params extends string = any> = ({
 }) => string | Promise<string>;
 
 export const applyLayout =
-  (layout: LayoutFunction): PagesFunction =>
+  (layout: LayoutFunction, isRoot: boolean): PagesFunction =>
   async ({ request, env, params, next }) => {
     const url = new URL(request.url);
     const method = request.method;
     if (
       url.pathname.match(/\.[^/]+$/) ||
       method !== 'GET' ||
-      url.pathname.match(/_[^/]+$/)
+      url.pathname.match(/_[^/]+$/) ||
+      (isRoot && request.headers.get('HX-Boosted') === 'true')
     ) {
       return next();
     }

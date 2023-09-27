@@ -1,7 +1,7 @@
 import Stat from '@components/Stat';
 import Table from '@components/Table';
 
-import { html, htmlResponse } from '@lib/html';
+import { html, view } from '@lib/html';
 
 const timer = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -42,13 +42,13 @@ export const onRequestPost: PagesFunction = async () => {
       color: 'Red',
     },
   ];
-  return htmlResponse(Table(items));
+  return view(Table(items));
 };
 
 // show the loading state of the Table component and trigger a POST request
 export const onRequestGet: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
-  return htmlResponse(html`
+  return view(html`
     <div class="w-full h-screen p-10 text-center">
       <div class="text-2xl text-secondary mb-4">Cloudflare + HTMX</div>
       ${Stat()}

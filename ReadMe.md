@@ -19,7 +19,7 @@ $ npm run dev
 
 - NextJS-style routing files, written in Typescript, are found in the `functions` folder.
 - Endpoints should return HTML strings wrapped in a `new Response()`.
-- `import { html, htmlResponse } from "@lib/html"` declaration allows a string template to be syntax highlighted in VS Code
+- `import { html, view } from "@lib/html"` declaration allows a string template to be syntax highlighted in VS Code
 - Use `_middleware.ts` files at any level of the folder structure to apply a layout. You should use this to at least apply your root level HTML wrapper.
   e.g.
 

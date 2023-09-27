@@ -1,5 +1,5 @@
 import Spinner from '@components/Spinner';
-import { html, htmlResponse } from '@lib/html';
+import { html, view } from '@lib/html';
 import { authConfig } from '@lib/constants';
 import { verify, Env } from 'cloudflare-auth';
 
@@ -16,7 +16,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
 export const onRequestGet: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
-  return htmlResponse(html`
+  return view(html`
     <form class="h-screen" hx-post="/verify" hx-trigger="load">
       <input
         type="hidden"
