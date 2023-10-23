@@ -1,6 +1,5 @@
-import { authConfig } from '@lib/constants';
-import { logout } from 'cloudflare-auth';
+import { Env, logout } from 'cloudflare-auth';
 
-export const onRequestPost: PagesFunction = async ({ request }) => {
-  return logout(authConfig, new URL(request.url));
+export const onRequestPost: PagesFunction<Env> = async ({ env }) => {
+  return logout(env, '/');
 };

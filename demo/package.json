@@ -10,15 +10,15 @@
     "db:init": "wrangler d1 execute auth --local --file=./schema.sql"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230404.0",
-    "@types/cookie": "^0.5.1",
-    "tailwindcss": "^3.3.1",
-    "wrangler": "^3.0.1"
+    "@cloudflare/workers-types": "^4.20231016.0",
+    "@types/cookie": "^0.5.3",
+    "tailwindcss": "^3.3.3",
+    "wrangler": "^3.14.0"
   },
   "private": true,
   "dependencies": {
-    "cloudflare-auth": "^1.0.0",
+    "cloudflare-auth": "^1.5.0",
     "cookie": "^0.5.0",
-    "daisyui": "^2.51.6"
+    "daisyui": "^2.52.0"
   }
 }

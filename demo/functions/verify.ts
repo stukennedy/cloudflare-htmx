@@ -1,6 +1,5 @@
 import Spinner from '@components/Spinner';
 import { html, view } from '@lib/html';
-import { authConfig } from '@lib/constants';
 import { verify, Env } from 'cloudflare-auth';
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
@@ -8,9 +7,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const data = await request.formData();
   const token = data.get('token') as string;
   try {
-    return await verify(token!, env, authConfig, url);
-  } catch {
-    return Response.redirect(url.origin, 301);
+    return await verify(token!, env, '/dashboard');
+  } catch (e) {
+    console.log(e);
+    return Response.redirect(url.origin, 303);
   }
 };
 

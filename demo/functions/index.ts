@@ -1,8 +1,7 @@
 import Toast from '@components/Toast';
-import { Env, isAuthorised, login } from 'cloudflare-auth';
+import { Env, isAuthorised, loginWithToken } from 'cloudflare-auth';
 
 import { html, view } from '@lib/html';
-import { authConfig } from '@lib/constants';
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const url = new URL(request.url);
@@ -11,8 +10,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   if (!email) {
     return view(Toast('Email not specified'));
   }
-  const token = await login(email, env);
-  const magicLink = `${url.origin}/verify?token=${token}`;
+  const magicLink = await loginWithToken(email, env, url.origin, true);
   try {
     return view(
       Toast(
@@ -25,8 +23,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   }
 };
 
-export const onRequestGet: PagesFunction = async ({ request }) => {
-  const loggedIn = await isAuthorised(authConfig, request);
+export const onRequestGet: PagesFunction<Env> = async ({ env, request }) => {
+  const loggedIn = await isAuthorised(request, env);
   if (loggedIn) {
     console.log('redirect to dashboard');
     const url = new URL(request.url);

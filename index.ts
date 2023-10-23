@@ -3,6 +3,8 @@ const HEADERS = { headers: { 'content-type': 'text/html;charset=UTF-8' } };
 export const html = String.raw;
 export const view = (...domArgs: string[]) =>
   new Response(domArgs.join('\n'), HEADERS);
+export const redirect = (url: string, status = 303) =>
+  new Response(null, { status, headers: { 'HX-Redirect': url } });
 
 export type LayoutFunction<Env = any, Params extends string = any> = ({
   children,
